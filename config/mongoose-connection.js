@@ -14,11 +14,6 @@ const connectDB = async () => {
 
         await mongoose.connect(process.env.MONGO_URL);
 
-        console.log(config.port)
-
-
-        // console.log(process.env.MONGO_URL);
-
         debugger; // 👈 Debug after successful connection
         dbg("✅ MongoDB Connected Successfully");
         // console.log('object')

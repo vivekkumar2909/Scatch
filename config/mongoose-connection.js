@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
 import dotenv from 'dotenv'
 import debug from 'debug'
+import { config } from "./config.js";
 
 
 
@@ -12,6 +13,9 @@ const connectDB = async () => {
         debugger; // 👈 Debug before connecting
 
         await mongoose.connect(process.env.MONGO_URL);
+
+        console.log(config.port)
+
 
         // console.log(process.env.MONGO_URL);
 

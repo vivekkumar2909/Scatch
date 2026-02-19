@@ -1,5 +1,5 @@
 import cookieParser from 'cookie-parser';
-import express from 'express';
+import express, { Router } from 'express';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import dotenv from 'dotenv';
@@ -7,6 +7,7 @@ import connectDB from './config/mongoose-connection.js';
 import userRoutes from './routes/userRoutes.js'; // ✅ Added
 import ownerRoutes from './routes/ownerRoutes.js';
 import productRoutes from './routes/productRoutes.js';
+import indexRouter from './routes/index.js';
 
 dotenv.config();
 
@@ -29,6 +30,8 @@ app.use(express.static(path.join(dirname, 'public')));
 app.use('/user', userRoutes);
 app.use('/product', productRoutes);
 app.use('/owner', ownerRoutes);
+
+app.use('/', indexRouter)
 
 const PORT = process.env.PORT || 3000;
 

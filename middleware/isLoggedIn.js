@@ -29,10 +29,12 @@ const isLoggedIn = async (req, res, next) => {
 
     } catch (error) {
         console.log("AUTH ERROR:", error.message);
-        return res.status(401).json({
-            success: false,
-            message: "Invalid or expired token"
-        });
+        req.flash("error", "Session expired. Please login again.");        // return res.status(401).json({
+        //     success: false,
+        //     message: "Invalid or expired token"
+        // });
+
+        res.redirect('/')
     }
 };
 

@@ -8,4 +8,8 @@ ownerRoutes.get('/', (req, res) => {
 });
 
 
+if (process.env.NODE_ENV == 'development') {
+    ownerRoutes.post('/create',)
+}
+
 export default ownerRoutes;

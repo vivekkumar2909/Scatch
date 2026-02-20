@@ -8,6 +8,8 @@ import userRoutes from './routes/userRoutes.js'; // ✅ Added
 import ownerRoutes from './routes/ownerRoutes.js';
 import productRoutes from './routes/productRoutes.js';
 import indexRouter from './routes/index.js';
+import expressSession from 'express-session'
+import flash from 'connect-flash';
 
 dotenv.config();
 
@@ -23,7 +25,14 @@ app.set('view engine', 'ejs');
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
-
+app.use(
+    expressSession({
+        resave: false,
+        saveUninitialized: false,
+        secret: process.env.EXPRESS_SESSION_SECRET,
+    })
+);
+app.use(flash());
 app.use(express.static(path.join(dirname, 'public')));
 
 // ✅ Fixed Typo

@@ -4,12 +4,15 @@ const ownerRoutes = express.Router();
 
 ownerRoutes.get('/', (req, res) => {
     res.send('owner');
-    // console.log(process.env.NODE_ENV);
 });
 
 
 if (process.env.NODE_ENV == 'development') {
-    ownerRoutes.post('/create',)
+    ownerRoutes.post('/create', (req, res) => {
+        res.send('Hey');
+    })
 }
+
+
 
 export default ownerRoutes;

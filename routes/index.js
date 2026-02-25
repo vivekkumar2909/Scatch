@@ -1,5 +1,6 @@
 import express, { Router } from 'express'
 import isLoggedIn from '../middleware/isLoggedIn.js'
+import Product from '../models/product.model.js'
 
 
 const indexRouter = express.Router();
@@ -9,8 +10,9 @@ indexRouter.get('/', (req, res) => {
     res.render("index", { error });
 })
 
-indexRouter.get('/shop', isLoggedIn, (req, res) => {
-    res.render('shop');
+indexRouter.get('/shop', isLoggedIn, async (req, res) => {
+    let products = await Product.find();
+    res.render('shop', { products });
 })
 
 

@@ -87,5 +87,10 @@ const loginUser = async (req, res) => {
     }
 };
 
+const logout = (req, res) => {
+    res.clearCookie("token");  // Replace "token" with your cookie name
+    res.redirect("index");
+};
+
 export { loginUser };
 export default registerUser;
